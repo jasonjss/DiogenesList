@@ -15,6 +15,7 @@ numFiles=0
 numDirs=0 
 grandTotalSize=0
 linkFiles="false" # file linking not yet implemented
+linkroot = ""
 
 
 
@@ -99,12 +100,11 @@ def generateDirArray(dirToScan):
 
 
 
-def generateHTML(dirData,appName,appVer,genDate,genTime,title,filename,appLink,numFiles,numDirs,grandTotalSize,linkFiles):
+def generateHTML(appName,appVer,genDate,genTime,title,filename,appLink,numFiles,numDirs,grandTotalSize,linkFiles,linkroot,sourceroot,dirData):
     templateFile = open('template.html', 'r')
     outputFile = open(filename+'.html', 'w')
     for line in templateFile:
         modifiedLine = line
-        modifiedLine = modifiedLine.replace('[DIR DATA]', dirData)
         modifiedLine = modifiedLine.replace('[APP NAME]', appName)
         modifiedLine = modifiedLine.replace('[APP VER]', appVer)
         modifiedLine = modifiedLine.replace('[GEN DATE]', genDate)
@@ -115,30 +115,29 @@ def generateHTML(dirData,appName,appVer,genDate,genTime,title,filename,appLink,n
         modifiedLine = modifiedLine.replace('[NUM DIRS]', str(numDirs))
         modifiedLine = modifiedLine.replace('[TOT SIZE]', str(grandTotalSize))
         modifiedLine = modifiedLine.replace('[LINK FILES]', linkFiles)
+        modifiedLine = modifiedLine.replace('[LINK PROTOCOL]', "")
+        modifiedLine = modifiedLine.replace('[LINK ROOT]', linkroot)
+        modifiedLine = modifiedLine.replace('[SOURCE ROOT]', sourceroot)
+        modifiedLine = modifiedLine.replace('[DIR DATA]', dirData)
         outputFile.write(modifiedLine)
     templateFile.close()
     outputFile.close()
 	
 
-
-
-
 # main program start point
-if len(sys.argv) < 3:	# check if required arguments are supplied
+if len(sys.argv) < 4:	# check if required arguments are supplied
     print ("Missing arguments. This tool should be used as follows:")
-    print ("	diogeneslist pathToIndex outputFileName")
+    print ("	diogeneslist pathToIndex outputFileName title website")
 else:
     pathToIndex = str(sys.argv[1])
     filename = str(sys.argv[2])
-    if len(sys.argv) == 4:
-        title = str(sys.argv[3])
-    else:
-        title = filename
+    title = str(sys.argv[3])
+    sourceroot = os.path.basename(os.path.normpath(str(sys.argv[1])))
+    if len(sys.argv) == 5:
+        linkroot = str(sys.argv[4])
+        linkFiles = "true"
     if os.path.exists(pathToIndex):	# check if the specified directory exists
         generateDirArray(pathToIndex)
-        generateHTML(dirData,appName,appVer,genDate,genTime,title,filename,appLink,numFiles,numDirs,grandTotalSize,linkFiles)
+        generateHTML(appName,appVer,genDate,genTime,title,filename,appLink,numFiles,numDirs,grandTotalSize,linkFiles,linkroot,sourceroot,dirData)
     else:
         print ("The specified directory doesn't exist")
-
-    
-        
