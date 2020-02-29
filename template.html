@@ -6,10 +6,85 @@
 
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=10,IE=9,IE=8">
-
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<title>[TITLE]</title>
 	
 	<style type="text/css">
+
+	@media screen and (max-width:600px) {
+		.app_header_search_help {
+			display: none!important;
+		}
+		input#search_text {
+			width: 100%;
+			height: 100%;
+			border: 1px solid #e3e3e3;
+			border-radius: 3px;
+		}
+		.app_header_search {
+			float: right!important;
+			padding: 80px 0px 0 25px!important;
+			position: absolute!important;
+			width: 90%!important;
+			height: 30px!important;
+		}
+		#files.tablesorter tbody td {
+			width: 100%!important;
+			padding: 5px 14px 2px 14px!important;
+		}
+		.list_header {
+			font-size: 14px!important;
+			padding: 5px!important;
+			white-space: nowrap!important;
+			overflow: scroll!important;
+		}
+		span.file a, span.file_folder a {
+			font-size: 14px!important;
+			white-space: nowrap!important;
+		}
+		#files.tablesorter {
+			font-size: 14px!important;
+			white-space: nowrap!important;
+		}
+		.app_header {
+			width: 100%!important;
+			height: 100px!important;
+			padding-top: 0!important;
+			padding-bottom: 30px!important;
+			margin-left: auto!important;
+			margin-right: auto!important;
+		}
+		.treeview {
+			position: absolute!important;
+			z-index: 1!important;
+			left: 0px!important;
+			width: 0!important;
+			height: 0!important;
+			display: none!important;
+		}
+		.vsplitbar {
+			display: none;
+		}
+		.list_container {
+			left: 0!important;
+			width: 100%!important;
+			height: 100%!important;
+		}
+		#files.tablesorter thead tr .header {
+			display: none!important;
+		}
+		td.date {
+			display: none;
+		}
+		.content {
+			height: 100%!important;
+		}
+		.list_footer {
+			display: none;
+			padding: 0!important;
+			border-top: 0!important;
+		}
+	}
 
 		html, body {
 			height:100%;
