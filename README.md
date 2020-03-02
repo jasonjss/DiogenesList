@@ -5,11 +5,12 @@ DiogenesList is a multiplatform CLI-only clone of [Snap2HTML](http://www.rlvisio
 It's purpose is to create single page HTML+Javascript browsable lists of the contents of a given directory
 
 ## Usage
-The program only takes two arguments, the directory to be indexed and the output file name without the extension, so:
+The program takes four arguments, the directory to be indexed and the output file name without the extension, so:
 
- *diogeneslist.py /home/user filelist*
+ *diogeneslist.py /home/user filelist title [linkprefix]*
  
-Will index the contents of /home/user and save them to filelist.html on the current directory. Simple as that
+Will index the contents of /home/user and save them to filelist.html on the current directory. 
+If you want add links to the contents, you can set linkprefix.
 
 
 ## License
